@@ -3,7 +3,12 @@ package calculator;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        Parser parser = new Parser();
         Calculator calculator = new Calculator();
-        System.out.println(calculator.add(new int[]{1,2,3}));
+
+        int[] numbers = parser.parseByDefaultSeparator("1,2:3");
+        int sum = calculator.add(numbers);
+
+        System.out.println(sum);
     }
 }
