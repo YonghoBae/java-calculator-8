@@ -8,10 +8,6 @@ public class InputView {
 
         String strForSum = Console.readLine();
 
-        if(strForSum.startsWith("//")){
-            strForSum += Console.readLine();
-        }
-
         Console.close();
 
         return strForSum;

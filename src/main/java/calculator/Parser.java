@@ -13,12 +13,12 @@ public class Parser {
 
         int[] numbers = new int[textNumbers.length];
 
-        if(!isPositive(numbers)) {
-            throw new IllegalArgumentException("입력값에 음수가 포함되어 있습니다.");
-        }
-
         for(int i = 0; i < textNumbers.length; i++) {
             numbers[i] = Integer.parseInt(textNumbers[i]);
+        }
+
+        if(!isPositive(numbers)) {
+            throw new IllegalArgumentException("입력값에 양수가 아닌 숫자가 포함되어 있습니다.");
         }
 
         return numbers;
@@ -26,7 +26,7 @@ public class Parser {
 
     public int[] parseByCustomSeparator(String input) {
 
-        Pattern pattern = Pattern.compile("^//(.)\n(.*)");
+        Pattern pattern = Pattern.compile("^//(.)\\\\n(.*)");
         Matcher matcher = pattern.matcher(input);
 
         if (matcher.find()) {
@@ -41,12 +41,12 @@ public class Parser {
 
             int[] numbers = new int[textNumbers.length];
 
-            if(!isPositive(numbers)) {
-                throw new IllegalArgumentException("입력값에 양수가 아닌 숫자가 포함되어 있습니다.");
-            }
-
             for(int i = 0; i < textNumbers.length; i++) {
                 numbers[i] = Integer.parseInt(textNumbers[i]);
+            }
+
+            if(!isPositive(numbers)) {
+                throw new IllegalArgumentException("입력값에 양수가 아닌 숫자가 포함되어 있습니다.");
             }
 
             return numbers;
