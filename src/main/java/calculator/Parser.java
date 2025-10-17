@@ -13,6 +13,10 @@ public class Parser {
 
         int[] numbers = new int[textNumbers.length];
 
+        if(!isPositive(numbers)) {
+            throw new IllegalArgumentException("입력값에 음수가 포함되어 있습니다.");
+        }
+
         for(int i = 0; i < textNumbers.length; i++) {
             numbers[i] = Integer.parseInt(textNumbers[i]);
         }
@@ -37,6 +41,10 @@ public class Parser {
 
             int[] numbers = new int[textNumbers.length];
 
+            if(!isPositive(numbers)) {
+                throw new IllegalArgumentException("입력값에 양수가 아닌 숫자가 포함되어 있습니다.");
+            }
+
             for(int i = 0; i < textNumbers.length; i++) {
                 numbers[i] = Integer.parseInt(textNumbers[i]);
             }
@@ -54,6 +62,16 @@ public class Parser {
                 if(!Character.isDigit(number.charAt(i))){
                     return false;
                 }
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isPositive(int[] numbers) {
+        for(int number:numbers){
+            if(number<=0){
+                return false;
             }
         }
 
