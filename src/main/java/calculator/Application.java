@@ -10,7 +10,7 @@ public class Application {
 
         String input = inputView.inputStringForSum();
 
-        int[] numbers = parser.parseByCustomSeparator(input);
+        int[] numbers = parser.parseBySeparator(input);
 
         int sum = calculator.add(numbers);
 
