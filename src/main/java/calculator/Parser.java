@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -18,14 +19,16 @@ public class Parser {
             textNumbers = input.split("[,:]");
         }
 
-        if (!isNumberic(textNumbers)) {
+        String[] filteredTextNumbers = Arrays.stream(textNumbers).filter(s -> s != null && !s.isBlank()).toArray(String[]::new);
+
+        if (!isNumberic(filteredTextNumbers)) {
             throw new IllegalArgumentException("입력값에 숫자가 아닌 문자가 포함되어 있습니다.");
         }
 
-        int[] numbers = new int[textNumbers.length];
+        int[] numbers = new int[filteredTextNumbers.length];
 
-        for(int i = 0; i < textNumbers.length; i++) {
-            numbers[i] = Integer.parseInt(textNumbers[i]);
+        for(int i = 0; i < filteredTextNumbers.length; i++) {
+            numbers[i] = Integer.parseInt(filteredTextNumbers[i]);
         }
 
         if(!isPositive(numbers)) {
