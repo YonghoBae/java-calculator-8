@@ -8,12 +8,13 @@ public class Application {
         Calculator calculator = new Calculator();
         OutputView outputView = new OutputView();
 
-        String input = inputView.inputStringForSum();
+        CalculatorController controller = new CalculatorController(
+                inputView,
+                calculator,
+                parser,
+                outputView
+        );
 
-        int[] numbers = parser.parseBySeparator(input);
-
-        int sum = calculator.add(numbers);
-
-        outputView.print(sum);
+        controller.run();
     }
 }
